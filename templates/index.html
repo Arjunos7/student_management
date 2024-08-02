@@ -46,9 +46,7 @@
                               <h5 class="modal-title">
                                 Student: {{ student.first_name }} {{ student.last_name }}
                               </h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"></span>
-                              </button>
+
                             </div>
                             <div class="modal-body">
                               <ul class="list-unstyled">
@@ -67,7 +65,7 @@
                         </div>
                       </div>
 
-                      <a class="btn btn-warning me-1" href="">
+                      <a class="btn btn-warning me-1" href="{% url 'students:edit' student.id %}">
                         <i class="fa-solid fa-pen-to-square fa-lg"></i>
                       </a>
 
@@ -83,18 +81,17 @@
                               <h5 class="modal-title">
                                 Student: {{ student.first_name }} {{ student.last_name }}
                               </h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"></span>
-                              </button>
+
                             </div>
                             <div class="modal-body">
                               <p>Are you sure you want to delete this student?</p>
                             </div>
                             <div class="modal-footer">
-                              <form action="" method="POST">
-                                {% csrf_token %}
-                                <input type="submit" class="btn btn-primary" value="Delete">
+                             <form action="{% url 'students:delete' student.id %}" method="POST">
+                                  {% csrf_token %}
+                                  <input type="submit" class="btn btn-primary" value="Delete">
                               </form>
+
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                             </div>
                           </div>
